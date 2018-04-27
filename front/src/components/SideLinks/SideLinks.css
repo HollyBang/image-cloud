@@ -1,4 +1,5 @@
 .side-links {
-    width: 15%;
+    flex: 1 1 200px;
+
     background-color: aliceblue;
 }

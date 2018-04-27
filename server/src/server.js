@@ -40,10 +40,19 @@ app.post('/upload', upload.single('selectedFile'), (req, res) => {
 
   file.save((err, a) => {
     if (err) throw err;
-
     console.error('saved img to mongo');
   });
-  
+});
+
+app.get('/getimages', function (req, res, next) {
+  let file = new fileModel;
+  fileModel.find({}, function (err, docs) {
+    if (err) return next(err);
+
+    console.log(docs);
+    res.contentType(doc.img.contentType);
+    res.send(doc.img.data);
+  });
 });
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
