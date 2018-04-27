@@ -7,9 +7,7 @@ const cors = require('cors');
 const path = require('path');
 
 const fileModel = require('./models/filemodel');
-const Schema = mongoose.Schema;
 
-// const imgSchema = require('./models/filemodel');
 
 
 mongoose.Promise = require('bluebird');

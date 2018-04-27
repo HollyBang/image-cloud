@@ -4,7 +4,7 @@ class ImgGallery extends Component {
     render() {
         return (
             <div>
-                GALLERY
+                <button>Get Images</button>
             </div>
         );
     }

@@ -16,7 +16,7 @@ class imgUpload extends Component {
         const data = new FormData();
         data.append('selectedFile', event.target.files[0]);
         data.append('filename', 'test');
-        
+
         console.log(event.target.files);
         this.setState({
             formData: data
@@ -26,7 +26,6 @@ class imgUpload extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        
         let data = this.state.formData;
         axios.post('http://localhost:4200/upload', data).then((response) => {
             console.log(response);
