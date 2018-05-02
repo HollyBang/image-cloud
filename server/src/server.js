@@ -23,6 +23,7 @@ mongoose.connect('mongodb://holly:fethebest@ds159459.mlab.com:59459/filecloud')
 const upload = multer();
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -48,10 +49,14 @@ app.get('/getimages', function (req, res, next) {
   let file = new fileModel;
   fileModel.find({}, function (err, docs) {
     if (err) return next(err);
-
-    console.log(docs);
-    res.contentType(doc.img.contentType);
-    res.send(doc.img.data);
+    let imgList = docs.map((item)=>{
+      return 'data:image/jpeg;base64,' + item.img.data.toString('base64');
+    })
+    // let base64Img = docs[0].img.data.toString('base64');
+    // console.log(docs);
+    res.contentType('image/jpeg');
+    res.send(imgList);
+    
   });
 });
 
