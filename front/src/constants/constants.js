@@ -1,0 +1,1 @@
+export const IMG_UPLOAD = 'IMG_UPLOAD';

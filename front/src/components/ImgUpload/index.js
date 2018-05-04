@@ -1,3 +1,3 @@
-import ImgUpload from './imgUpload.jsx';
+import ImgUpload from './ImgUpload.jsx';
 
 export default ImgUpload;

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import imgUpload from '../../actions/imgUpload';
 
 
-class imgUpload extends Component {
+
+class ImgUpload extends Component {
     constructor(props) {
         super(props);
         this.state = {
             formData: null
         }
         this.handleUploadFile = this.handleUploadFile.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+  
 
     }
     handleUploadFile = (event) => {
@@ -27,10 +32,7 @@ class imgUpload extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let data = this.state.formData;
-        axios.post('http://localhost:4200/upload', data).then((response) => {
-            console.log(response);
-        });
-
+        this.props.imgUpload(data);
     }
     render() {
         return (
@@ -44,6 +46,8 @@ class imgUpload extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+    imgUpload,
+  }, dispatch);
 
-
-export default imgUpload;
+export default connect(null, mapDispatchToProps)(ImgUpload);

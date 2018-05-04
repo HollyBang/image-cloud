@@ -26,7 +26,7 @@ class ImgGallery extends Component {
             <div>
                 <button onClick={this.imagesReq}>Get Images</button>
                 <div className='gallery-content'>
-                {/* //TODO: вынести в отдельный космпонент */}
+                {/* //TODO: вынести в отдельный компонент */}
                     {this.state.img.map((item) => {
                         return (
                             <div className='gallery-image'>
