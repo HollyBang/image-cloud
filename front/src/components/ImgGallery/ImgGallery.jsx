@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
 import './ImgGallery.css';
+
+import getGallery from '../../actions/getGallery';
 
 class ImgGallery extends Component {
     constructor(props) {
@@ -13,15 +17,11 @@ class ImgGallery extends Component {
 
 
     imagesReq = () => {
-        axios.get('http://localhost:4200/getimages').then((response) => {
-            console.log(response);
-            this.setState({
-                img: response.data
-            });
-        });
+        this.props.getGallery();
     }
 
     render() {
+        console.log('gallery',this.props.gallery);
         return (
             <div>
                 <button onClick={this.imagesReq}>Get Images</button>
@@ -42,5 +42,14 @@ class ImgGallery extends Component {
         );
     }
 }
+const mapDispatchToProps = dispatch => bindActionCreators({
+    getGallery,
+  }, dispatch);
 
-export default ImgGallery;
+const mapStateToProps = state => ({
+    gallery: state.getGallery.ImgGallery
+
+});
+  
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImgGallery);
