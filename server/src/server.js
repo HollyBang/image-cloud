@@ -50,10 +50,8 @@ app.get('/getimages', function (req, res, next) {
   fileModel.find({}, function (err, docs) {
     if (err) return next(err);
     let imgList = docs.map((item)=>{
-      return 'data:image/jpeg;base64,' + item.img.data.toString('base64');
+      return `data:image/jpeg;base64,${item.img.data.toString('base64')}`;
     })
-    // let base64Img = docs[0].img.data.toString('base64');
-    // console.log(docs);
     res.contentType('image/jpeg');
     res.send(imgList);
     
