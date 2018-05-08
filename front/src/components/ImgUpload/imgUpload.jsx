@@ -25,19 +25,20 @@ class ImgUpload extends Component {
         this.setState({
             formData: data
         });
-
+        // event.target.value = null;
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         let data = this.state.formData;
         this.props.imgUpload(data);
+        // this.input.value = null;
     }
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="file" name="selectedFile" onChange={this.handleUploadFile} />
+                    <input type="file" name="selectedFile" ref={(input) => this.input = input} onChange={this.handleUploadFile} />
                     <button>send</button>
                 </form>
             </div>
