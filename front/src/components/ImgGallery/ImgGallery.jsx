@@ -35,9 +35,7 @@ class ImgGallery extends Component {
                     {/* //TODO: create new stateless component instead this */}
                     {this.props.gallery.map((item, i) => {
                         return (
-                            <div key={i} className='gallery-image'>
-                                <img src={item.link}  alt="lol" />
-                            </div>
+                                <img key={i} src={item.link}  alt="lol" />
                         )
                     })}
                 </div>)

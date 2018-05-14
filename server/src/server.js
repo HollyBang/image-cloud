@@ -32,7 +32,8 @@ mongoose.connect('mongodb://holly:fethebest@ds159459.mlab.com:59459/filecloud')
 const upload = multer({ storage });
 const app = express();
 
-app.use(express.static('images'));
+// app.use(express.static('images'));
+app.use('/static', express.static('images'));
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -40,7 +41,10 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-
+// app.use('/static/:id', function (req, res, next) {
+//   console.log('Request Id:', req.params.id);
+//   next();
+// });
 
 
 app.post('/upload', upload.single('selectedFile'), (req, res) => {
@@ -61,12 +65,10 @@ app.get('/getimages', function (req, res, next) {
   fileModel.find({}, function (err, docs) {
     if (err) return next(err);
     let imgList = docs.map((item)=>{
-      return {link: `http://localhost:4200/${item.img.imgName}`}
+      return {link: `http://localhost:4200/static/${item.img.imgName}`}
     })
-
     res.contentType('image/jpeg');
     res.send(imgList);
-    
   });
 });
 
