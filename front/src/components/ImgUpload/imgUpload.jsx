@@ -19,7 +19,7 @@ class ImgUpload extends Component {
     handleUploadFile = (event) => {
         const data = new FormData();
         data.append('selectedFile', event.target.files[0]);
-        data.append('filename', 'test');
+        data.append('filename', event.target.files[0].name);
 
         console.log(event.target.files);
         this.setState({

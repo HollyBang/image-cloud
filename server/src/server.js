@@ -8,7 +8,16 @@ const path = require('path');
 
 const fileModel = require('./models/filemodel');
 
-
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './images')
+  },
+  filename: (req, file, cb) => {
+    // console.log(file);
+    const newFilename = file.originalname;
+    cb(null, newFilename);
+   },
+})
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://holly:fethebest@ds159459.mlab.com:59459/filecloud')
@@ -20,8 +29,10 @@ mongoose.connect('mongodb://holly:fethebest@ds159459.mlab.com:59459/filecloud')
     process.exit(1);
   });
 
-const upload = multer();
+const upload = multer({ storage });
 const app = express();
+
+app.use(express.static('images'));
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -33,10 +44,10 @@ app.use(bodyParser.urlencoded({
 
 
 app.post('/upload', upload.single('selectedFile'), (req, res) => {
-  console.log('req.file', req.file);
-  console.log('req.body', req.body);
+  // console.log('req.file', req.file);
+  // console.log('req.body', req.body);
   let file = new fileModel;
-  file.img.data = req.file.buffer;
+  file.img.imgName = req.body.filename;
   file.img.contentType = req.file.mimetype;
 
   file.save((err, a) => {
@@ -50,10 +61,7 @@ app.get('/getimages', function (req, res, next) {
   fileModel.find({}, function (err, docs) {
     if (err) return next(err);
     let imgList = docs.map((item)=>{
-      return {
-        image: `data:image/jpeg;base64,${item.img.data.toString('base64')}`,
-        id: item.id
-      };
+      return {link: `http://localhost:4200/${item.img.imgName}`}
     })
 
     res.contentType('image/jpeg');
