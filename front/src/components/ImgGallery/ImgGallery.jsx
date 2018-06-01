@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './ImgGallery.css';
 
 import getGallery from '../../actions/getGallery';
+import Image from '../Image';
 
 class ImgGallery extends Component {
     constructor(props) {
@@ -32,10 +33,9 @@ class ImgGallery extends Component {
         } else {
             content =
                 (<div className='gallery-content'>
-                    {/* //TODO: create new stateless component instead this */}
                     {this.props.gallery.map((item, i) => {
                         return (
-                                <img key={i} src={item.link}  alt="lol" />
+                                <Image key={i} item={item} />
                         )
                     })}
                 </div>)

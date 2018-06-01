@@ -1,0 +1,122 @@
+
+.card-templet {
+    font-family: 'Playfair Display', Arial, sans-serif;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 230px;
+    max-width: 315px;
+    max-height: 220px;
+    width: 100%;
+    color: #000000;
+    text-align: right;
+    font-size: 16px;
+    background-color: #000000;
+  }
+  .card-templet * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+  .card-templet img {
+    max-width: 100%;
+    backface-visibility: hidden;
+  }
+  .card-templet figcaption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 1;
+    padding: 30px 0 30px 10px;
+    background-color: #ffffff;
+    width: 40%;
+    -webkit-transform: translateX(150%);
+    transform: translateX(150%);
+  }
+  .card-templet figcaption:before {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 100%;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 120px 120px 120px 0;
+    border-color: transparent #ffffff transparent transparent;
+  }
+  .card-templet:after {
+    position: absolute;
+    bottom: 50%;
+    right: 40%;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 120px 120px 0 120px;
+    border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
+  }
+  .card-templet h3,
+  .card-templet p {
+    line-height: 1.5em;
+    -webkit-transform: translateX(-30px);
+    transform: translateX(-30px);
+    margin: 0;
+  }
+  .card-templet h3 {
+    margin: 0 0 5px;
+    line-height: 1.1em;
+    font-weight: 900;
+    font-size: 1.4em;
+    opacity: 0.75;
+  }
+  .card-templet p {
+    font-size: 0.8em;
+  }
+  .card-templet i {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px 30px;
+    font-size: 44px;
+    color: #ffffff;
+    opacity: 0;
+  }
+  .card-templet a {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+  .card-templet:hover img,
+  .card-templet.active img {
+    zoom: 1;
+    filter: alpha(opacity=50);
+    -webkit-opacity: 0.5;
+    opacity: 0.5;
+  }
+  .card-templet:hover:after,
+  .card-templet.active:after,
+  .card-templet:hover figcaption,
+  .card-templet.active figcaption,
+  .card-templet:hover i,
+  .card-templet.active i {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+      
+  
+  
+  
