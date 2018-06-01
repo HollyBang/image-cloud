@@ -55,7 +55,12 @@ app.post('/upload', upload.single('selectedFile'), (req, res) => {
   file.img.contentType = req.file.mimetype;
 
   file.save((err, a) => {
-    if (err) throw err;
+    if (err) {
+      res.status = 503;
+      throw err;
+    }
+    res.status = 200;
+    res.send();
     console.error('saved img to mongo');
   });
 });
