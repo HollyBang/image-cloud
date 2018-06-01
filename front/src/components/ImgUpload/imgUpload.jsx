@@ -13,7 +13,7 @@ class ImgUpload extends Component {
             formData: null
         }
         this.handleUploadFile = this.handleUploadFile.bind(this);
-  
+        this.handleSubmit = this.handleSubmit.bind(this);
 
     }
     handleUploadFile = (event) => {
@@ -38,7 +38,7 @@ class ImgUpload extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="file" name="selectedFile" ref={(input) => this.input = input} onChange={this.handleUploadFile} />
+                    <input type="file" name="selectedFile" onChange={this.handleUploadFile} />
                     <button>send</button>
                 </form>
             </div>
@@ -51,3 +51,5 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   }, dispatch);
 
 export default connect(null, mapDispatchToProps)(ImgUpload);
+
+// ref={(input) => this.input = input}
