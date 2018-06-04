@@ -1,4 +1,4 @@
-# Its image cloude or maybe this will be a blog, i not sure now
+# Its image cloud or maybe this will be a blog, i not sure now
 
 Image cloud service
 
