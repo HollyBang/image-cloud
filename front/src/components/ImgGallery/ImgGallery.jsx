@@ -17,7 +17,7 @@ class ImgGallery extends Component {
     }
 
 
-    imagesReq = () => {
+    imagesReq() {
         this.props.getGallery();
         this.setState({
             isLoading: true

@@ -16,19 +16,19 @@ class ImgUpload extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-    handleUploadFile = (event) => {
+    handleUploadFile(e) {
         const data = new FormData();
-        data.append('selectedFile', event.target.files[0]);
-        data.append('filename', event.target.files[0].name);
+        data.append('selectedFile', e.target.files[0]);
+        data.append('filename', e.target.files[0].name);
 
-        console.log(event.target.files);
+        console.log(e.target.files);
         this.setState({
             formData: data
         });
-        // event.target.value = null;
+        // e.target.value = null;
     }
 
-    handleSubmit = (e) => {
+    handleSubmit(e){
         e.preventDefault();
         let data = this.state.formData;
         this.props.imgUpload(data);
