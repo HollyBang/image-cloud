@@ -1,6 +1,6 @@
 # Its image cloude or maybe this will be a blog, i not sure now
 
-Image cloude service
+Image cloud service
 
 ### Prerequisites
 
