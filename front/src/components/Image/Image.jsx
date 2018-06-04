@@ -27,7 +27,7 @@ class Image extends Component {
         );
     };
 }
-//TODO:
+//TODO:test
 // const mapDispatchToProps = dispatch => bindActionCreators({
     
 // }, dispatch);
