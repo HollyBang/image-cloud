@@ -1,4 +1,10 @@
 .header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     width: 100%;
     background-color: antiquewhite;
+}
+.header-link {
+    margin: 5px;
 }

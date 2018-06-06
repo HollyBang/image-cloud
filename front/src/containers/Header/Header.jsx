@@ -4,7 +4,8 @@ import './Header.css';
 const Header = () => {
     return (
         <div className="header">
-            HEADER
+            <a className="header-link" href="">LOGIN</a>
+            <a className="header-link" href="">REGISTRATION</a>
         </div>
     );
 };
