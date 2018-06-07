@@ -6,6 +6,7 @@ const cors = require('cors');
 const path = require('path');
 
 const imagesRouter = require('./routes/imagesRouter');
+const signupRouter = require('./routes/signupRouter');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://holly:fethebest@ds159459.mlab.com:59459/filecloud')
@@ -27,7 +28,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use('/', imagesRouter);
+app.use('/image', imagesRouter);
+app.use('/account', signupRouter);
 
 // app.use('/static/:id', function (req, res, next) {
 //   console.log('Request Id:', req.params.id);
