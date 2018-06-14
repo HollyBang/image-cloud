@@ -4,6 +4,7 @@
     align-items: center;
     width: 100%;
     background-color: antiquewhite;
+    position: relative;
 }
 .header-link {
     margin: 5px;

@@ -1,0 +1,37 @@
+.pop-up-circle {
+    display: none;
+    position: fixed;
+    bottom: 500px;
+    width: 1000px;
+    height: 1000px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    opacity: 1;
+    background: #2b2c36;
+    right: -500px;
+    z-index: 8999;
+    animation: big-pop-up 0.6s ease-in-out; 
+}
+.on {
+    display: block;
+}
+.off {
+    display: none;
+}
+
+
+@keyframes big-pop-up {
+    0% {
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
