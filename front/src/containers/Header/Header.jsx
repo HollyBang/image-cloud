@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
+import { CSSTransitionGroup, TransitionGroup } from 'react-transition-group';
 import './Header.css';
 import ContactForm from '../../components/UI/example/ContactForm.jsx';
 import CircleForm from '../../components/UI/CircleForm/CircleForm.jsx';
@@ -25,18 +25,15 @@ class Header extends Component {
     }
 
     render() {
+        const toggleClass = this.state.isToggleOn ? 'off' : 'on';
         return (
             <div className="header">
-                <a className="header-link" href="" onClick={this.handleClick}>LOGIN</a>
+                <a className="header-link" onClick={this.handleClick}>LOGIN</a>
                 <a className="header-link" href="">REGISTRATION</a>
                 {/* <ContactForm  onSubmit={this.submit} /> */}
-                {/* <CSSTransitionGroup
-                    transitionName="example"
-                    transitionEnterTimeout={500}
-                    transitionLeaveTimeout={300}>
-                   
-                </CSSTransitionGroup> */}
-                <CircleForm />
+                <TransitionGroup timeout={100}>
+                    <CircleForm toggleClass={toggleClass} />
+                </TransitionGroup>
             </div>
         );
     }

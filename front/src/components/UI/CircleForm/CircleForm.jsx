@@ -3,8 +3,9 @@ import './CircleForm.css';
 
 const CircleForm = (props) => {
     console.log(props);
+    const { toggleClass } = props;
     return (
-        <div className="pop-up-circle"></div>
+        <div className={`pop-up-circle ${toggleClass}`}></div>
     );
 };
 
