@@ -1,17 +1,11 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import ContactForm from '../UI/example/ContactForm.js';
+
 
 import './SideLinks.css';
 
-class SideLinks extends Component {
+const SideLinks = () => {
 
-    submit = values => {
-        // print the form values to the console
-        console.log(values)
-      }
-
-    render() {
         return (
             <div className="side-links">
                 <ul>
@@ -22,10 +16,9 @@ class SideLinks extends Component {
                         <Link to="/gallery">Gallery Images</Link>
                     </li>
                 </ul>
-                <ContactForm onSubmit={this.submit} />
+                
             </div>
         );
-    }
 };
 
 export default SideLinks;
