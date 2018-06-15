@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import './Header.css';
+
+import signup from '../../actions/signup';
 
 import CircleForm from '../../components/UI/CircleForm/CircleForm.jsx';
 
 class Header extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { isToggleOn: false };
 
 
@@ -22,7 +26,7 @@ class Header extends Component {
     }
 
     submit(values) {
-        // print the form values to the console
+        this.props.signup(values);
         console.log(values)
     }
 
@@ -44,4 +48,8 @@ class Header extends Component {
     }
 };
 
-export default Header;
+const mapDispatchToProps = dispatch => bindActionCreators({
+    signup,
+  }, dispatch);
+
+export default connect(null, mapDispatchToProps)(Header);
