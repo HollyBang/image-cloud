@@ -1,9 +1,9 @@
-import axios from 'axios';
+import API from '../api/api';
 import { GET_GALLERY } from '../constants/constants'; 
 
 export default function getGallery() {
     return async function (dispatch) {
-        axios.get('http://localhost:4200/image/getimages').then((response) => {
+        API.get('image/getimages').then((response) => {
             return dispatch({
                 type: GET_GALLERY,
                 data: response.data,

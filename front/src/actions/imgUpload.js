@@ -1,11 +1,11 @@
 
 
-import axios from 'axios';
+import API from '../api/api';
 
 export default function imgUpload(data) {
     return async function (dispatch) {
 
-        axios.post('http://localhost:4200/image/upload', data);
+        API.post('image/upload', data);
 
     };
   }
