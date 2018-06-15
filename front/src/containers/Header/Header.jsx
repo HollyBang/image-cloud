@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import './Header.css';
-import ContactForm from '../../components/UI/example/ContactForm.jsx';
+
 import CircleForm from '../../components/UI/CircleForm/CircleForm.jsx';
 
 class Header extends Component {
 
     constructor() {
         super();
-        this.state = { isToggleOn: true };
+        this.state = { isToggleOn: false };
+
 
         this.handleClick = this.handleClick.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
     handleClick() {
@@ -19,21 +21,24 @@ class Header extends Component {
         }));
     }
 
-    submit = values => {
+    submit(values) {
         // print the form values to the console
         console.log(values)
     }
 
     render() {
-        const toggleClass = this.state.isToggleOn ? 'off' : 'on';
+        const { isToggleOn } = this.state;
         return (
             <div className="header">
                 <a className="header-link" onClick={this.handleClick}>LOGIN</a>
                 <a className="header-link" href="">REGISTRATION</a>
-                {/* <ContactForm  onSubmit={this.submit} /> */}
-                <TransitionGroup timeout={100}>
-                    <CircleForm toggleClass={toggleClass} />
-                </TransitionGroup>
+                <CSSTransition
+                    in={isToggleOn}
+                    classNames="circle-form"
+                    unmountOnExit
+                    timeout={600}>
+                    <CircleForm clicked={this.handleClick}  onSubmit={this.submit}/>
+                </CSSTransition>
             </div>
         );
     }

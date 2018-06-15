@@ -1,7 +1,6 @@
 .pop-up-circle {
-    display: none;
     position: fixed;
-    bottom: 500px;
+    top: -500px;
     width: 1000px;
     height: 1000px;
     -webkit-border-radius: 50%;
@@ -11,14 +10,20 @@
     background: #2b2c36;
     right: -500px;
     z-index: 8999;
-    animation: big-pop-up 0.6s ease-in-out; 
+    /* animation: big-pop-up 0.6s ease-in-out;  */
+}
+.register-form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 .on {
     display: block;
 }
 .off {
-    display: none;
+    animation: big-pop-close 0.6s ease-in-out; 
 }
+
 
 
 @keyframes big-pop-up {
@@ -33,5 +38,19 @@
     }
     100% {
         transform: scale(1);
+    }
+}
+@keyframes big-pop-close {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(0);
     }
 }

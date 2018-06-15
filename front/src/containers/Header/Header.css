@@ -9,3 +9,48 @@
 .header-link {
     margin: 5px;
 }
+
+.circle-form-enter {
+    animation: big-pop-up 0.6s ease-in-out; 
+  }
+  .circle-form-enter-active {
+
+
+  }
+  .circle-form-exit {
+    animation: big-pop-close 0.6s ease-in-out; 
+  }
+  .circle-form-exit-active {
+    opacity: 0.01;
+    transform: scale(0)
+    
+  }
+
+  @keyframes big-pop-up {
+    0% {
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes big-pop-close {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(1.1);
+    }
+    80% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
