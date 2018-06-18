@@ -6,6 +6,7 @@ import './ImgGallery.css';
 
 import getGallery from '../../actions/getGallery';
 import Image from '../Image';
+import Loader from '../UI/loader/Loader.jsx';
 
 class ImgGallery extends Component {
     constructor(props) {
@@ -41,17 +42,9 @@ class ImgGallery extends Component {
                 </div>)
         }
 
-        let preload = 
-        <div className="container">
-            <div className="item item-1"></div>
-            <div className="item item-2"></div>
-            <div className="item item-3"></div>
-            <div className="item item-4"></div>
-        </div>
-        
         return (
             <div>
-                {this.state.isLoading && gallery.length <= 0 ? preload : null}
+                {this.state.isLoading && gallery.length <= 0 ? <Loader /> : null}
                 {content}
             </div>
         );
