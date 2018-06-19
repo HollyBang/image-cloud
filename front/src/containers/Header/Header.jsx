@@ -34,8 +34,8 @@ class Header extends Component {
         const { isToggleOn } = this.state;
         return (
             <div className="header">
-                <a className="header-link" onClick={this.handleClick}>LOGIN</a>
-                <a className="header-link" href="">REGISTRATION</a>
+                <a className="header-link" >LOGIN</a>
+                <a className="header-link" onClick={this.handleClick}>REGISTRATION</a>
                 <CSSTransition
                     in={isToggleOn}
                     classNames="circle-form"
