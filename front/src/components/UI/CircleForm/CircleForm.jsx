@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import FontAwesome from 'react-fontawesome';
 import './CircleForm.css';
 
 let CircleForm = (props) => {
@@ -7,8 +8,8 @@ let CircleForm = (props) => {
     return (
         <div className={`pop-up-circle`}>
             <div className="register-form">
-                <form onSubmit={handleSubmit}>
-                <div onClick={clicked} >CLOSE</div>
+                <form className="signup-form" onSubmit={handleSubmit}>
+                <FontAwesome onClick={clicked} tag={'span'} name='far fa-times-circle' />
                     <div>
                         <label htmlFor="email">Email</label>
                         <Field name="email" component="input" type="email" />
@@ -25,8 +26,7 @@ let CircleForm = (props) => {
 };
 
 CircleForm = reduxForm({
-    // a unique name for the form
-    form: 'contact'
+    form: 'login'
   })(CircleForm)
 
 export default CircleForm;
