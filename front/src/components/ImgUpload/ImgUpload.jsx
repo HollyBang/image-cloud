@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+
+import './ImgUpload.css';
 import imgUpload from '../../actions/imgUpload';
 
 
@@ -22,33 +24,33 @@ class ImgUpload extends Component {
         data.append('filename', e.target.files[0].name);
 
         console.log(e.target.files);
-        this.setState({
-            formData: data
-        });
+        // this.setState({
+        //     formData: data
+        // });
         // e.target.value = null;
+        this.props.imgUpload(data);
     }
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
-        let data = this.state.formData;
-        this.props.imgUpload(data);
+        // let data = this.state.formData;
+        // this.props.imgUpload(data);
         // this.input.value = null;
     }
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="file" name="selectedFile" onChange={this.handleUploadFile} />
-                    <button>send</button>
+                <form onSubmit={this.handleSubmit} className="upload-btn-wrapper">
+                    {/* <button className="btn">Upload a file</button> */}
+                    <label className="btn" htmlFor="inputFile">Upload a file</label>
+                    <input id="inputFile" type="file" name="selectedFile" onChange={this.handleUploadFile} />
                 </form>
-            </div>
         );
     }
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     imgUpload,
-  }, dispatch);
+}, dispatch);
 
 export default connect(null, mapDispatchToProps)(ImgUpload);
 
