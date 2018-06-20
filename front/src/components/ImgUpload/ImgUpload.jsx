@@ -11,38 +11,32 @@ import imgUpload from '../../actions/imgUpload';
 class ImgUpload extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            formData: null
-        }
+
         this.handleUploadFile = this.handleUploadFile.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-    handleUploadFile(e) {
+        handleUploadFile(e) {
+    
         const data = new FormData();
         data.append('selectedFile', e.target.files[0]);
         data.append('filename', e.target.files[0].name);
 
-        console.log(e.target.files);
-        // this.setState({
-        //     formData: data
-        // });
-        // e.target.value = null;
         this.props.imgUpload(data);
+        e.target.value = null;
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
-        // let data = this.state.formData;
-        // this.props.imgUpload(data);
-        // this.input.value = null;
-    }
+
     render() {
+
+        const { loadingFlag } = this.props;
+        const btnName = loadingFlag ? 'Loading' : 'Upload a file';
+
         return (
-                <form onSubmit={this.handleSubmit} className="upload-btn-wrapper">
+                <form className="upload-btn-wrapper">
                     {/* <button className="btn">Upload a file</button> */}
-                    <label className="btn" htmlFor="inputFile">Upload a file</label>
-                    <input id="inputFile" type="file" name="selectedFile" onChange={this.handleUploadFile} />
+                    <label className="btn" htmlFor="inputFile">{ btnName }</label>
+                    <input id="inputFile" type="file" name="selectedFile" onChange={this.handleUploadFile} disabled={loadingFlag}/>
                 </form>
         );
     }
@@ -52,6 +46,10 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     imgUpload,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(ImgUpload);
+const mapStateToProps = state => ({
+    loadingFlag: state.imgUpload.isFetching
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImgUpload);
 
 // ref={(input) => this.input = input}

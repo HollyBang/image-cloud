@@ -1,13 +1,18 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Route, Switch, withRouter } from "react-router-dom";
 
 import ImgUpload from '../../components/ImgUpload';
 import ImgGallery from '../../components/ImgGallery';
 import './MainContent.css';
 
-const MainContent = () => {
+const MainContent = (props) => {
+    console.log(props.loadingFlag);
+   const { loadingFlag } = props;
+   const loadingClass = loadingFlag ? 'loading' : '';
+
     return (
-        <div className="main-content">
+        <div className={`main-content ${loadingClass}`}>
             <Switch>
                 <Route exact path="/" component={ImgUpload} />
                 <Route path="/gallery" component={ImgGallery} />
@@ -16,4 +21,8 @@ const MainContent = () => {
     );
 };
 
-export default MainContent;
+const mapStateToProps = state => ({
+    loadingFlag: state.imgUpload.isFetching
+}) 
+
+export default withRouter(connect(mapStateToProps)(MainContent));
