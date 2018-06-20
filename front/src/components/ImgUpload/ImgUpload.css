@@ -1,54 +1,63 @@
 .upload-btn-wrapper {
-    position: relative;
-    /* overflow: hidden; */
-    display: inline-block;
-    margin: 10px;
-    align-self: center;
-    
+  position: relative;
+  /* overflow: hidden; */
+  display: inline-block;
+  margin: 10px;
+  align-self: center;
 }
+
 #inputFile {
-    opacity: 0;
-    visibility: hidden;
-    display: none;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
 }
 
 .btn {
-    display: inline-block;
-    border: 2px solid gray;
-    color: gray;
-    background-color: white;
-    padding: 8px 20px;
-    border-radius: 8px;
-    font-size: 20px;
-    cursor: pointer;
-    user-select: none;
-    font-weight: bold;
-    box-shadow: 0 0.2em 0 rgb(200, 130, 240), 0 0.3em 0.5em rgba(0, 0, 0, .3);
-    background: rgb(220, 150, 240);
-    transform: translateY(-0.2em);
-    transition: all 0.3s;
+  display: inline-block;
+  border: 2px solid gray;
+  color: white;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  box-shadow: 0 0.2em 0 rgb(31, 75, 0), 0 0.3em 0.5em rgba(0, 0, 0, .3);
+  background: rgb(91, 150, 50);
+  /* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5A */
+  transform: translateY(-0.2em);
+  transition: all 0.3s;
 }
-.btn:hover
-{ 
-  box-shadow: 
-    0 0.35em 0 rgb(190,120,230), 
-    0 0.4em 0.5em rgba(0,0,0,.3);
-  background: rgb(230,160,250);
+
+.btn:hover {
+  box-shadow: 0 0.35em 0 rgb(43, 102, 1), 0 0.4em 0.5em rgba(0, 0, 0, .3);
+  background: rgb(133, 188, 94);
   transform: translateY(-0.35em);
 }
-.btn:active
-{ 
-  box-shadow: 
-    0 0em 0 rgb(190,120,230), 
-    0 0em 0em rgba(0,0,0,.3);
-  background: rgb(190,120,230);
+
+.btn:active {
+  box-shadow: 0 0em 0 rgb(16, 39, 0), 0 0em 0em rgba(0, 0, 0, .3);
+  background: rgb(31, 75, 0);
   transform: translateY(0em);
 }
 
 .upload-btn-wrapper input[type=file] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
+/* 
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+} */
