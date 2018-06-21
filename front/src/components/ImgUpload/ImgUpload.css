@@ -49,6 +49,23 @@
   top: 0;
   opacity: 0;
 }
+.lastImage {
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.4;
+  transform: translate(-50%,-50%);
+  transition: all 0.2s linear;
+} 
+.lastImage:hover {
+  width: 105%;
+  height: 105%;
+}
 /* 
 @keyframes Gradient {
   0% {

@@ -1,10 +1,15 @@
+const initialState = {
+  isFetching: null,
+  lastFileName: ''
+}
 
- const imgUpload = (state = {isFetching: false}, action) => {
+
+ const imgUpload = (state = initialState, action) => {
   switch(action.type) {
     case 'POST_REQUEST': 
       return { ...state, isFetching: true };
     case 'POST_SUCCESS': 
-      return { ...state, isFetching: false };
+      return { ...state, isFetching: false, lastFileName: action.payload };
     case 'POST_FAILURE': 
       return { ...state, isFetching: false };
     default: 

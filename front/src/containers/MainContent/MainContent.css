@@ -4,6 +4,7 @@
     flex: 6;
     position: relative;
     min-height: calc(100vh - 35px);
+    overflow: hidden;
 }
 
 .loading {

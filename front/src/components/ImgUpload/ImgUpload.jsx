@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -16,28 +16,36 @@ class ImgUpload extends Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
 
     }
-        handleUploadFile(e) {
-    
-        const data = new FormData();
-        data.append('selectedFile', e.target.files[0]);
-        data.append('filename', e.target.files[0].name);
+    handleUploadFile(e) {
 
-        this.props.imgUpload(data);
+        let fileName = e.target.files[0].name;
+
+        const formData = new FormData();
+        formData.append('selectedFile', e.target.files[0]);
+        formData.append('filename', fileName);
+
+        this.props.imgUpload({ formData, fileName });
         e.target.value = null;
     }
 
 
     render() {
+        const { lastFileName } = this.props;
+        const wrapperStyle = {
+            backgroundImage: 'url(http://localhost:4200/static/' + lastFileName + ')',
+        };
 
         const { loadingFlag } = this.props;
         const btnName = loadingFlag ? 'Loading' : 'Upload a file';
 
         return (
+            <Fragment>
+                <div className="lastImage" style={wrapperStyle}></div>
                 <form className="upload-btn-wrapper">
-                    {/* <button className="btn">Upload a file</button> */}
-                    <label className="btn" htmlFor="inputFile">{ btnName }</label>
-                    <input id="inputFile" type="file" name="selectedFile" onChange={this.handleUploadFile} disabled={loadingFlag}/>
+                    <label className="btn" htmlFor="inputFile">{btnName}</label>
+                    <input id="inputFile" type="file" name="selectedFile" onChange={this.handleUploadFile} disabled={loadingFlag} />
                 </form>
+            </Fragment>
         );
     }
 }
@@ -47,7 +55,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch);
 
 const mapStateToProps = state => ({
-    loadingFlag: state.imgUpload.isFetching
+    loadingFlag: state.imgUpload.isFetching,
+    lastFileName: state.imgUpload.lastFileName
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImgUpload);

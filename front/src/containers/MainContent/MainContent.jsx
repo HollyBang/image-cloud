@@ -7,9 +7,14 @@ import ImgGallery from '../../components/ImgGallery';
 import './MainContent.css';
 
 const MainContent = (props) => {
-    console.log(props.loadingFlag);
+
+    console.log(props);
+
    const { loadingFlag } = props;
    const loadingClass = loadingFlag ? 'loading' : '';
+
+
+
 
     return (
         <div className={`main-content ${loadingClass}`}>
@@ -22,7 +27,7 @@ const MainContent = (props) => {
 };
 
 const mapStateToProps = state => ({
-    loadingFlag: state.imgUpload.isFetching
+    loadingFlag: state.imgUpload.isFetching,
 }) 
 
 export default withRouter(connect(mapStateToProps)(MainContent));
