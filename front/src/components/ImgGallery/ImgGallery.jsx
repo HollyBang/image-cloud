@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -30,23 +30,28 @@ class ImgGallery extends Component {
         let { gallery } = this.props;
         let content;
         if (gallery.length <= 0) {
-            content = (<button onClick={this.imagesReq}>Get Images</button>)
+            content = (
+                <div className="btn-getGallery">
+                    <label onClick={this.imagesReq} className="btn" htmlFor="inputFile">Get Images</label>
+                    <input id="inputFile" type="button" name="selectedFile"/>
+                </div>
+            )
         } else {
             content =
                 (<div className='gallery-content'>
                     {this.props.gallery.map((item, i) => {
                         return (
-                                <Image key={i} item={item} />
+                            <Image key={i} item={item} />
                         )
                     })}
                 </div>)
         }
 
         return (
-            <div>
+            <Fragment>
                 {this.state.isLoading && gallery.length <= 0 ? <Loader /> : null}
                 {content}
-            </div>
+            </Fragment>
         );
     }
 }
