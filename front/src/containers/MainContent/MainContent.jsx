@@ -8,13 +8,8 @@ import './MainContent.css';
 
 const MainContent = (props) => {
 
-    console.log(props);
-
    const { loadingFlag } = props;
    const loadingClass = loadingFlag ? 'loading' : '';
-
-
-
 
     return (
         <div className={`main-content ${loadingClass}`}>
