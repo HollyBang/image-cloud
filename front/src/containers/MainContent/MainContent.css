@@ -1,10 +1,31 @@
 .main-content {
+    position: absolute;
+    background-color: dimgray;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.page-main {
+    position: relative;
+    height: 100%;
+    /* justify-content: center;
     flex: 6;
     position: relative;
     min-height: calc(100vh - 35px);
+    overflow: hidden; */
+}
+.perspective-wrapper {
     overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    perspective: 1200px;
+    flex: 5;
 }
 
 .loading {

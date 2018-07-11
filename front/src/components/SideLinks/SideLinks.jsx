@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 
 
 import './SideLinks.css';
@@ -10,10 +10,10 @@ const SideLinks = () => {
             <div className="side-links">
                 <ul>
                     <li>
-                        <Link to="/">Upload Image</Link>
+                        <NavLink to="/" exact>Upload Image</NavLink>
                     </li>
                     <li>
-                        <Link to="/gallery">Gallery Images</Link>
+                        <NavLink to="/gallery" exact>Gallery Images</NavLink>
                     </li>
                 </ul>
                 
