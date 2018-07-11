@@ -2,6 +2,7 @@ const express = require('express');
 const imagesRouter = express.Router();
 const multer = require('multer');
 const fileModel = require('../models/filemodel');
+var fs = require('fs');
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -36,14 +37,22 @@ imagesRouter.post('/upload', upload.single('selectedFile'), (req, res) => {
   
   imagesRouter.get('/getimages', function (req, res, next) {
     let file = new fileModel;
+
+    let serverFiles = fs.readdirSync('images');
+    console.log('server files ',serverFiles);
+ 
     fileModel.find({}, function (err, docs) {
       if (err) return next(err);
-      let imgList = docs.map((item)=>{
+      let filteredImg = docs.filter((item)=>{
+       return serverFiles.includes(item.img.imgName)
+      }).map((item)=>{
         return {link: `http://localhost:4200/static/${item.img.imgName}`}
       })
+      console.log('filteredImg ',filteredImg);
+     
       res.contentType('image/jpeg');
-      res.send(imgList);
+      res.send(filteredImg);
     });
   });
-
   module.exports = imagesRouter;
+
