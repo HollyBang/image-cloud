@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
-import './animation.css';
-
 
 import registerServiceWorker from './registerServiceWorker';
 

@@ -36,11 +36,9 @@ imagesRouter.post('/upload', upload.single('selectedFile'), (req, res) => {
   });
   
   imagesRouter.get('/getimages', function (req, res, next) {
-    let file = new fileModel;
 
     let serverFiles = fs.readdirSync('images');
-    console.log('server files ',serverFiles);
- 
+
     fileModel.find({}, function (err, docs) {
       if (err) return next(err);
       let filteredImg = docs.filter((item)=>{
@@ -48,11 +46,9 @@ imagesRouter.post('/upload', upload.single('selectedFile'), (req, res) => {
       }).map((item)=>{
         return {link: `http://localhost:4200/static/${item.img.imgName}`}
       })
-      console.log('filteredImg ',filteredImg);
-     
+  
       res.contentType('image/jpeg');
       res.send(filteredImg);
     });
   });
   module.exports = imagesRouter;
-

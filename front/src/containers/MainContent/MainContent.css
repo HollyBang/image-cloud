@@ -20,6 +20,7 @@
     min-height: calc(100vh - 35px);
     overflow: hidden; */
 }
+
 .perspective-wrapper {
     overflow: hidden;
     width: 100vw;
@@ -35,16 +36,62 @@
     background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
     background-size: 400% 400%;
     animation: Gradient 15s ease infinite;
-    }
+}
 
-    @keyframes Gradient {
-        0% {
+.fade-appear,
+.fade-enter {}
+
+.fade-appear-active {}
+
+.fade-enter-active {
+    animation: slideIn 1000ms both ease;
+}
+.fade-exit {}
+
+.fade-exit-active {
+    animation: slideOut 1000ms both ease;
+}
+
+@keyframes slideOut {
+    0% {}
+    25% {
+        opacity: .5;
+        transform: translateZ(-500px);
+    }
+    75% {
+        opacity: .5;
+        transform: translateZ(-500px) translateX(-200%);
+    }
+    100% {
+        opacity: .5;
+        transform: translateZ(-500px) translateX(-200%);
+    }
+}
+
+@keyframes slideIn {
+    0%,
+    25% {
+        opacity: .5;
+        transform: translateZ(-500px) translateX(200%);
+    }
+    75% {
+        opacity: .5;
+        transform: translateZ(-500px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateZ(0) translateX(0);
+    }
+}
+
+@keyframes Gradient {
+    0% {
         background-position: 0% 50%
-        }
-      50% {
-      background-position: 100% 50%
-      }
-      100% {
-      background-position: 0% 50%
-      }
-      }
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
