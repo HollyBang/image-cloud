@@ -36,7 +36,7 @@ userRouter.post('/signup', (req, res, next) => {
             message: 'Error: Account already exist.'
           });
         }
-
+        req.session.user = email;
         const newUser = new User();
         newUser.email = email;
         newUser.password = newUser.generateHash(password);

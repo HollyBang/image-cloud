@@ -3,7 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const session = require('express-session');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 const imagesRouter = require('./routes/imagesRouter');
 const signupRouter = require('./routes/signupRouter');
@@ -23,10 +25,22 @@ const app = express();
 
 // app.use(express.static('images'));
 app.use('/static', express.static('images'));
-app.use(cors());
+app.use(cors({
+  origin:['http://localhost:3000'],
+  methods:['GET','POST'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
+}));
+
+app.use(cookieParser());
+app.use(session({
+  secret: 'myololosecret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
 }));
 app.use('/image', imagesRouter);
 app.use('/account', signupRouter);

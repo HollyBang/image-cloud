@@ -20,6 +20,8 @@ const upload = multer({ storage });
 imagesRouter.post('/upload', upload.single('selectedFile'), (req, res) => {
     // console.log('req.file', req.file);
     // console.log('req.body', req.body);
+
+    console.log(req.session);
     let file = new fileModel;
     file.img.imgName = req.body.filename;
     file.img.contentType = req.file.mimetype;
@@ -30,13 +32,16 @@ imagesRouter.post('/upload', upload.single('selectedFile'), (req, res) => {
         throw err;
       }
       res.status = 200;
+      res.setHeader('Access-Control-Allow-Credentials', 'true')
       res.send();
       console.error('saved img to mongo');
     });
   });
   
   imagesRouter.get('/getimages', function (req, res, next) {
-
+    console.log(req.session);
+ 
+    
     let serverFiles = fs.readdirSync('images');
 
     fileModel.find({}, function (err, docs) {
@@ -46,7 +51,7 @@ imagesRouter.post('/upload', upload.single('selectedFile'), (req, res) => {
       }).map((item)=>{
         return {link: `http://localhost:4200/static/${item.img.imgName}`}
       })
-  
+      res.setHeader('Access-Control-Allow-Credentials', 'true')
       res.contentType('image/jpeg');
       res.send(filteredImg);
     });
