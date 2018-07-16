@@ -1,3 +1,10 @@
+export const IMG_UPLOAD_REQUEST = 'IMG_UPLOAD_REQUEST';
 export const IMG_UPLOAD = 'IMG_UPLOAD';
+
+
 export const GET_GALLERY = 'GET_GALLERY';
 export const GET_GALLERY_SUCCESS = 'GET_GALLERY_SUCCESS';
+
+//sign in
+export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';

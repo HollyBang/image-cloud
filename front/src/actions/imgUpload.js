@@ -1,7 +1,9 @@
+import { IMG_UPLOAD_REQUEST } from '../constants/constants';
+
 const imgUpload = (data) => {
     console.log('data ACTION ----->' ,data);
     return {
-        type: 'POST_REQUEST',
+        type: IMG_UPLOAD_REQUEST,
         payload: data
     }
 };

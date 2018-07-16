@@ -1,6 +1,6 @@
 const initialState = {
   isFetching: null,
-  lastFileName: ''
+  lastFileName: 'default-image.jpg'
 }
 
 

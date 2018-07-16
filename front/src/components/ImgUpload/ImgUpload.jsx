@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
+// import selectorImgUpload from '../../selectors/selected_imgUpload';
 
 import './ImgUpload.css';
 import imgUpload from '../../actions/imgUpload';
