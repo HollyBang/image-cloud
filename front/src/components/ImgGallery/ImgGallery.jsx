@@ -17,6 +17,11 @@ class ImgGallery extends Component {
         this.imagesReq = this.imagesReq.bind(this);
     }
 
+    // shouldComponentUpdate(nextProps) {
+    //    return nextProps.gallery.length === this.props.gallery.length
+    //    ? false
+    //    : true
+    // }
 
     imagesReq() {
         this.props.getGallery();
@@ -26,7 +31,7 @@ class ImgGallery extends Component {
     }
 
     render() {
-        console.log('gallery', this.props.gallery);
+
         let { gallery } = this.props;
         let content;
         if (gallery.length <= 0) {
