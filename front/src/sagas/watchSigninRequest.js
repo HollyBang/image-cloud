@@ -1,18 +1,18 @@
-
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { SIGNUP_REQUEST, SIGNUP_SUCCESS } from '../constants/constants';
+import { SIGNIN_REQUEST, SIGNIN_SUCCESS } from '../constants/constants';
 import API from '../api/api';
 
 export function* createRequest(action) {
-
     try {
-        yield call(API.post, 'account/signup', action.payload);
-        yield put({type: SIGNUP_SUCCESS, payload: true});
+        const res = yield call(API.post, 'account/signin', action.payload);
+        // const data = yield res.json();
+        console.log('SIGNIN_REQUEST saga DATA ---->>>', res);
+        yield put({type: SIGNIN_SUCCESS, payload: true});
     } catch (error) {
         console.log('createRequest error', error);
     }
 }
 
-export default function* watchSigninRequest() {
-    yield takeEvery(SIGNUP_REQUEST, createRequest);
+export default function* watchSignupRequest() {
+    yield takeEvery(SIGNIN_REQUEST, createRequest);
 }
