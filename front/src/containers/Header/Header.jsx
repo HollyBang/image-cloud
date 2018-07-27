@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import './Header.css';
 
 import signup from '../../actions/signup';
+import signin from '../../actions/signin';
 
 import CircleForm from '../../components/UI/CircleForm/CircleForm.jsx';
 
@@ -12,9 +13,14 @@ class Header extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { isToggleOn: false };
+        this.state = {
+            isToggleOn: false,
+            formToggle: true
+        };
 
 
+        this.registrationClick = this.registrationClick.bind(this);
+        this.loginClick = this.loginClick.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.submit = this.submit.bind(this);
     }
@@ -25,23 +31,40 @@ class Header extends Component {
         }));
     }
 
+    registrationClick() {
+        this.setState({
+            formToggle: true
+        });
+        this.handleClick();
+    }
+    loginClick() {
+        this.setState({
+            formToggle: false
+        });
+        this.handleClick();
+    }
+
     submit(values) {
-        this.props.signup(values);
+        const { signup, signin } = this.props;
+        const { formToggle } = this.state;
+
+        let behaviorSubmit = formToggle ? signup : signin;
+        behaviorSubmit(values);
         console.log(values)
     }
 
     render() {
-        const { isToggleOn } = this.state;
+        const { isToggleOn, formToggle } = this.state;
         return (
             <div className="header">
-                <a className="header-link" >LOGIN</a>
-                <a className="header-link" onClick={this.handleClick}>REGISTRATION</a>
+                <a className="header-link" onClick={this.loginClick}>LOGIN</a>
+                <a className="header-link" onClick={this.registrationClick}>REGISTRATION</a>
                 <CSSTransition
                     in={isToggleOn}
                     classNames="circle-form"
                     unmountOnExit
                     timeout={600}>
-                    <CircleForm clicked={this.handleClick}  onSubmit={this.submit}/>
+                    <CircleForm clicked={this.handleClick} formFlag={formToggle} onSubmit={this.submit} />
                 </CSSTransition>
             </div>
         );
@@ -50,6 +73,7 @@ class Header extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     signup,
-  }, dispatch);
+    signin
+}, dispatch);
 
 export default connect(null, mapDispatchToProps)(Header);
