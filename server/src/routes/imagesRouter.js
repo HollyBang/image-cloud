@@ -52,7 +52,6 @@ imagesRouter.post('/upload', upload.single('selectedFile'), (req, res) => {
         return {link: `http://localhost:4200/static/${item.img.imgName}`}
       })
       res.setHeader('Access-Control-Allow-Credentials', 'true')
-      res.contentType('image/jpeg');
       res.send(filteredImg);
     });
   });

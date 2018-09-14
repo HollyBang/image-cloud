@@ -20,8 +20,8 @@ class Header extends Component {
 
 
         this.registrationClick = this.registrationClick.bind(this);
-        this.loginClick = this.loginClick.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.loginClick = this.loginClick.bind(this);
         this.submit = this.submit.bind(this);
     }
 
@@ -50,7 +50,7 @@ class Header extends Component {
 
         let behaviorSubmit = formToggle ? signup : signin;
         behaviorSubmit(values);
-        console.log(values)
+        console.log(values);
     }
 
     render() {
